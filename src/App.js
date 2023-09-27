@@ -6,19 +6,23 @@ import ShoppingCart from './components/ShoppingCart';
 import './App.css';
 import Modal from './components/Modal';
 
+
+
 function App() {
   const allProducts = [
-    { name: "Example Item 1", price: "$10", imgSrc: "/assets/item1.jpg" },
-    { name: "Example Item 2", price: "$20", imgSrc: "/assets/item2.jpg" },
-    { name: "Example Item 3", price: "$30", imgSrc: "/assets/item3.jpg" },
-    { name: "Example Item 4", price: "$10", imgSrc: "/assets/item1.jpg" },
-    { name: "Example Item 5", price: "$20", imgSrc: "/assets/item2.jpg" },
-    { name: "Example Item 6", price: "$30", imgSrc: "/assets/item3.jpg" },
-    { name: "Example Item 7", price: "$10", imgSrc: "/assets/item1.jpg" },
-    { name: "Example Item 8", price: "$20", imgSrc: "/assets/item2.jpg" },
-    { name: "Example Item 9", price: "$30", imgSrc: "/assets/item3.jpg" },
+    { name: "Example Item 1", price: "$10", imgSrc: '/src/images/item1.jpg' },
+    { name: "Example Item 2", price: "$20", imgSrc: "/src/images/item1.jpg" },
+    { name: "Example Item 3", price: "$30", imgSrc: "/src/images/item1.jpg" },
+    { name: "Example Item 4", price: "$10", imgSrc: "/src/images/item1.jpg" },
+    { name: "Example Item 5", price: "$20", imgSrc: "/src/images/item1.jpg" },
+    { name: "Example Item 6", price: "$30", imgSrc: "/src/images/item1.jpg" },
+    { name: "Example Item 7", price: "$10", imgSrc: "/src/images/item1.jpg" },
+    { name: "Example Item 8", price: "$20", imgSrc: "/src/images/item1.jpg" },
+    { name: "Example Item 9", price: "$30", imgSrc: "/src/images/item1.jpg" },
     
   ];
+
+  
 
   const [cart, setCart] = useState([]);
   const [displayedProducts, setDisplayedProducts] = useState(allProducts);
@@ -72,6 +76,11 @@ function App() {
             </Modal>
           )}
         </header>
+        {isCartModalOpen && (
+    <Modal onClose={toggleCartModal}>
+      <ShoppingCart cart={cart} products={allProducts} removeFromCart={removeFromCart} />
+    </Modal>
+  )}
       </div>
     </Router>
   );

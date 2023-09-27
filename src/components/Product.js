@@ -8,11 +8,12 @@ function Product({ name, price, imgSrc, addToCart }) {
     setButtonText('Added!');
     setTimeout(() => {
       setButtonText('Add to Cart');
-    }, 1000); // Reset the button text after 5 seconds
+    }, 1000); // Reset the button text after 1 second
   };
+  
 
   return (
-    <div className="product">
+    <div className="products-container">
       <img src={imgSrc} alt={name} width="100" />
       <h2>{name}</h2>
       <p>{price}</p>
