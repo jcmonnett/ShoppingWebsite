@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Navbar({ onSearch, onCartClick }) {
+function Navbar({ onSearch, onCartClick, onLoginClick }) {
     const [searchQuery, setSearchQuery] = useState('');
   
     const handleInputChange = (e) => {
@@ -19,6 +19,7 @@ function Navbar({ onSearch, onCartClick }) {
           value={searchQuery}
           onChange={handleInputChange}
         />
+        <button onClick={onLoginClick}>Login</button>
       </nav>
     );
   }

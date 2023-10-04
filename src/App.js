@@ -5,6 +5,7 @@ import Product from './components/Product';
 import ShoppingCart from './components/ShoppingCart';
 import './App.css';
 import Modal from './components/Modal';
+import LoginModal from './components/LoginModal';
 
 
 
@@ -27,6 +28,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [displayedProducts, setDisplayedProducts] = useState(allProducts);
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+  
 
   const addToCart = (item) => {
     setCart([...cart, item]);
@@ -53,10 +55,24 @@ function App() {
     setIsCartModalOpen(!isCartModalOpen);
   };
 
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  const handleLogin = (email, password) => {
+    console.log("Logging in...", email, password);
+    // Implement login logic here
+    setIsLoginModalOpen(false);
+};
+
+const handleRegister = (email, password, confirmPassword) => {
+    console.log("Registering...", email, password, confirmPassword);
+    // Implement registration logic here
+    setIsLoginModalOpen(false);
+};
+
   return (
     <Router>
       <div className="App">
-        <Navbar onSearch={handleSearch} onCartClick={toggleCartModal} />
+        <Navbar onSearch={handleSearch} onCartClick={toggleCartModal} onLoginClick={() => setIsLoginModalOpen(true)} />
         <header className="App-header">
           <h1>Shopping Website</h1>
           <div className="products">
@@ -75,6 +91,12 @@ function App() {
               <ShoppingCart cart={cart} removeFromCart={removeFromCart} />
             </Modal>
           )}
+          <LoginModal 
+                isOpen={isLoginModalOpen} 
+                onClose={() => setIsLoginModalOpen(false)}
+                onLogin={handleLogin}
+                onRegister={handleRegister}
+            />
         </header>
         {isCartModalOpen && (
     <Modal onClose={toggleCartModal}>
